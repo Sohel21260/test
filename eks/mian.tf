@@ -84,26 +84,26 @@ provider "helm" {
  #  metadata {
  #   name      = "${var.cluster_name}-alb"
   
-OBOB #   annotations = {
+ #   annotations = {
   #     "eks.amazonaws.com/role-arn" = module.alb_controller_irsa.iam_role_arn
-OBOB #    }
+ #    }
 #   }
  # }
-OBOBOB#Install ALB Controller using Helm
+#Install ALB Controller using Helm
 resource "helm_release" "alb_controller" {
-OBOBOB  name       = "aws-load-balancer-controller"
-OBOBOBOBOBOB  repository = "https://aws.github.io/eks-charts"
-OBOB  chart      = "aws-load-balancer-controller"
-OBOBOBOB  namespace  = "kube-system"
-OBOBOB
+  name       = "aws-load-balancer-controller"
+  repository = "https://aws.github.io/eks-charts"
+  chart      = "aws-load-balancer-controller"
+  namespace  = "kube-system"
+
   set = [
-OBOB    {
+    {
       name  = "replicaCount"
       value = 1
     },
-OBOB    {
+    {
       name  = "clusterName"
-OBOB      value = var.cluster_name
+      value = var.cluster_name
     },
     {
       name  = "serviceAccount.name"
