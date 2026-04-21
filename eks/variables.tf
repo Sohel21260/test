@@ -50,6 +50,6 @@ variable "node_group_capacity_type" {
 
 variable "node_group_disk_size" {
   description = "The capacity type for the EKS node group (ON_DEMAND or SPOT)"
-  type        = string
+  type        = number
 }
 
