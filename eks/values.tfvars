@@ -1,5 +1,6 @@
 variable "cluster_name" {
   description = "Name of the EKS cluster"
+  default     = "my-eks-cluster"
 }
 
 variable "cluster_version" {
@@ -16,15 +17,18 @@ variable "cluster_endpoint_access_cidrs" {
 variable "node_group_name" {
   description = "Name of the node group"
   type        = string
+  default     = "my-node-group"
 }
 
 variable "node_group_ami_type" {
   description = "Instance ami type for the node group"
+  default     = "AL2_x86_64"
 }
 
 variable "node_group_instance_type" {
   description = "Instance types for the EKS managed node groups"
   type        = list(string)
+  default     = ["t3.medium"]
 }
 
 variable "node_group_min_size" {
@@ -51,5 +55,6 @@ variable "node_group_capacity_type" {
 variable "node_group_disk_size" {
   description = "The capacity type for the EKS node group (ON_DEMAND or SPOT)"
   type        = number
+  default     = 20
 }
 
